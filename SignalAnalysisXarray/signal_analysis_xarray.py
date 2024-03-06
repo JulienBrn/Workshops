@@ -1,17 +1,4 @@
-import pandas as pd, numpy as np, functools, scipy, xarray as xr, numexpr as ne
-import tqdm, pathlib
-from typing import List, Tuple, Dict, Any, Literal
-import matplotlib.pyplot as plt
-import matplotlib as mpl, seaborn as sns
-from scipy.stats import gaussian_kde
-import math, itertools, pickle, logging, beautifullogger
-import scipy.signal, math
-
-xr.set_options(use_flox=True, display_expand_coords=True, display_max_rows=100, display_expand_data_vars=True, display_width=150)
-logger = logging.getLogger(__name__)
-beautifullogger.setup(displayLevel=logging.INFO)
-logging.getLogger("flox").setLevel(logging.WARNING)
-tqdm.tqdm.pandas(desc="Computing")
+import numpy as np, xarray as xr, numexpr as ne, matplotlib.pyplot as plt
 
 dataset = xr.Dataset()
 dataset = dataset.assign_coords(t=np.linspace(-0*np.pi,100*np.pi, 2000, endpoint=False))
