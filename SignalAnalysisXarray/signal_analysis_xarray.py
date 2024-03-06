@@ -10,7 +10,7 @@ dataset["signal_1"] = xr.apply_ufunc(lambda expr, t: ne.evaluate(expr, dict(t=t,
 dataset["signal_2"] = xr.apply_ufunc(lambda expr, t: ne.evaluate(expr, dict(t=t, pi=np.pi))
     , dataset["s2"], dataset["t"], input_core_dims=[[], ["t"]], output_core_dims=["t"], vectorize=True)
 
-#Optional 
+#Optional: demonstrates that we can add dimensions without impact
 class noisetransform:
     def __init__(self, noise=0):
         self.noise = noise
@@ -24,7 +24,9 @@ for s in ["signal_1", "signal_2"]:
     dataset[s] = xr.apply_ufunc(lambda sig, t: t.transform(sig), dataset[s], dataset["noisetransformation"], input_core_dims=[["t"], []], output_core_dims= [["t"]], vectorize=True)
 
 dataset["noisetransformation"] = dataset["noisetransformation"].astype(str)
-dataset = dataset.isel(noisetransformation=[1])
+dataset = dataset.isel(noisetransformation=[1]) #There is an impact on plotting though...
+#EndOptional 
+
 dataset["s1"] = dataset["s1"].str.replace("where", "if").str.replace("*", "", regex=False)
 dataset["signal_1"].plot(row="s1")
 dataset["signal_2"].plot(col="s2")
