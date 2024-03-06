@@ -1,15 +1,31 @@
 import numpy as np, xarray as xr, numexpr as ne, matplotlib.pyplot as plt
 
 dataset = xr.Dataset()
-dataset = dataset.assign_coords(t=np.linspace(-0*np.pi,100*np.pi, 2000, endpoint=False))
+dataset = dataset.assign_coords(t=np.linspace(0,100*np.pi, 2000))
 dataset["fs"] = xr.apply_ufunc(lambda t: 1/(t[1]-t[0]), dataset["t"], input_core_dims=[["t"]])
 dataset = dataset.assign_coords(s1=["where(t< 150,cos(t),cos(2*t))", "cos(t+pi/2)"], s2= ["cos(t)", "cos(t+pi/2)", "cos(t+pi/3)"])
+
 dataset["signal_1"] = xr.apply_ufunc(lambda expr, t: ne.evaluate(expr, dict(t=t, pi=np.pi))
     , dataset["s1"], dataset["t"], input_core_dims=[[], ["t"]], output_core_dims=["t"], vectorize=True)
 dataset["signal_2"] = xr.apply_ufunc(lambda expr, t: ne.evaluate(expr, dict(t=t, pi=np.pi))
     , dataset["s2"], dataset["t"], input_core_dims=[[], ["t"]], output_core_dims=["t"], vectorize=True)
-dataset["s1"] = dataset["s1"].str.replace("where", "if").str.replace("*", "", regex=False)
 
+#Optional 
+class noisetransform:
+    def __init__(self, noise=0):
+        self.noise = noise
+    def __repr__(self):
+        return f"transform(noise={self.noise})"
+    def transform(self, x):
+        return x+ self.noise*np.random.rand(x.size)
+    
+dataset=dataset.assign_coords(noisetransformation=[noisetransform(), noisetransform(noise=3)])
+for s in ["signal_1", "signal_2"]:
+    dataset[s] = xr.apply_ufunc(lambda sig, t: t.transform(sig), dataset[s], dataset["noisetransformation"], input_core_dims=[["t"], []], output_core_dims= [["t"]], vectorize=True)
+
+dataset["noisetransformation"] = dataset["noisetransformation"].astype(str)
+dataset = dataset.isel(noisetransformation=[1])
+dataset["s1"] = dataset["s1"].str.replace("where", "if").str.replace("*", "", regex=False)
 dataset["signal_1"].plot(row="s1")
 dataset["signal_2"].plot(col="s2")
 
