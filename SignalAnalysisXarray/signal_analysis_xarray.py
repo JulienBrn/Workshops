@@ -35,8 +35,6 @@ dataset["correlate"].plot(row="s1", col="s2", x="t_corr")
 dataset["fftfreq"] = xr.apply_ufunc(lambda dt_fs: np.fft.rfftfreq(dataset.sizes["dt"], d = 1/dt_fs), dataset["dt_fs"], output_core_dims=[["fftfreq"]])
 dataset["fft"] = xr.apply_ufunc(lambda a: np.fft.rfft(a), dataset["correlate"], input_core_dims=[["dt"]], output_core_dims=[["fftfreq"]], vectorize=True)
 
-dataset=dataset.sel(fftfreq=slice(0.01, 10))
-
 np.abs(dataset["fft"]).plot(row="s1", col="s2", x="t_corr")
 xr.apply_ufunc(np.angle, dataset["fft"]).where(np.abs(dataset["fft"]) > 5000).plot(row="s1", col="s2", x="t_corr")
 print(dataset)
