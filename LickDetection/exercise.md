@@ -98,3 +98,9 @@ plt.show()
 1. Create a new variable named *lick_events* which contains all events in *events* that last at least *min_duration*. You will be using the same techniques as in the second step.
 1. Plot the result and check whether it is good. Adjust the *threshold* and *min_duration* values as necessary.
 1. Check on all your data. How many events do you find? Does it make sense?
+
+# Open questions
+
+1. If you were to do this on multiple (many, many) files, how would you do it?
+1. How do the different coding techniques compare?
+1. What part of the code you feel is worth putting inside a library? If so, with which coding technique and with which generalizations (if any)?
