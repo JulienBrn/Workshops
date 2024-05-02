@@ -11,7 +11,7 @@ The signal is sampled at 20k Hz and lasts around 40 minutes.
 
 An image of the data is available in *figures/Lick.png*. 
 
-![alt text](figures/Lick.png)
+![](figures/Lick.png)
 
 In the Spike2 set up, we believe the Lick channel records the voltage of a circuit with an alternating current that is open when the rat licks.
 In other words:
