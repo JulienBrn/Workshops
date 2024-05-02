@@ -41,7 +41,7 @@ Comparing performance, readability, maintainability, extensability of these tech
 Take 5-10 minutes to think about how we are going to detect the start and end times. Try to arrive to a kind of *mathematical definition* of what is a start and a end time.
 In 10 minutes we will all share our ideas.
 
-
+When you are ready, move to *exercise.md*
 
 
 
