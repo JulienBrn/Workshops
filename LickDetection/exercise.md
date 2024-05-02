@@ -16,7 +16,7 @@ We recall that the method consists in the following steps:
 
 # Programming technique
 
-We call that you chose one of the following coding techniques:
+We recall that you should chose one of the following coding techniques according to your coding level (listed from easier to harder):
 - Using lists and for loops
 - Using lists and list comprehensions
 - Using numpy arrays
