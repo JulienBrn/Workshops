@@ -27,8 +27,8 @@ We recall that you should chose one of the following coding techniques according
 1. Create a variable named *fs* with value 20 000
 1. Use the [numpy.load](https://numpy.org/doc/stable/reference/generated/numpy.load.html) to load the array (works for files in npy format).
 1. If you are using lists in your workshop, convert it to a list by using the [tolist](https://numpy.org/doc/stable/reference/generated/numpy.ndarray.tolist.html) method. If you are using xarray, make sure to add time coordinates to your array!
-1. Compute the size your expect your data to be (~40 minutes of recording sampled at 20k Hz).
-1. Print the size of your list/array and compare it to your expected value
+1. Compute the size (length of the array/list) you expect your data to be (~40 minutes of recording sampled at 20k Hz). No coding is involved, and please get the rough size (order of magnitude) without a calculator.
+1. Print the size of your list/array and compare it to your rough size. Does it make sense?
 
 The array may be a bit big for plotting (plotting may lag), so we will start by creating a shorter array on which everything is fairly small. This is good practice in general as it allows us to test our functions quickly and on real data. 
 
