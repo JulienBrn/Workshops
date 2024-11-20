@@ -9,6 +9,11 @@ Usually, python is already installed with the operating system (OS). However, wh
 - You may cause installation conflicts and create problems for your OS.
 
 There exists several ways of handling multiple python installations, mainly venv, conda and uv. We suggest to use conda as it is well documented and extremely popular. 
-Go to the [conda webpage](https://docs.conda.io/projects/conda/en/latest/user-guide/install/index.html) and do the necessary steps to install miniconda (anaconda is huge).
+Go to the [conda installation webpage](https://docs.conda.io/projects/conda/en/latest/user-guide/install/index.html) and do the necessary steps to install miniconda (anaconda is huge).
 
-## Install python
+## Install your first python environment
+
+We now have conda that helps us manage multiple python environments, we have yet to create one. Most instructions can be found on the [conda getting started webpage](https://docs.conda.io/projects/conda/en/latest/user-guide/getting-started.html) and I suggest you create your fist environment !
+
+Activate your environment and run the python interpreter. Check that it can compute 3+8 correctly
+
